@@ -27,7 +27,7 @@ AIceBlastPawn2::AIceBlastPawn2()
 	Ice->BodyInstance.bLockYRotation = true;
 	Ice->BodyInstance.bLockZRotation = true;
 
-	Ice->SetSimulatePhysics(true);
+
 
 	SideForce = 100;
 
@@ -44,7 +44,6 @@ void AIceBlastPawn2::BeginPlay()
 	GameMode = Cast<AIceBlastGameGameMode>(GetWorld()->GetAuthGameMode());
 
 	bGameEnded = false;
-	Ice->SetSimulatePhysics(true);
 	Mass = Ice->GetMass();
 	bJump = false;
 	DefaultSideForce = SideForce;
