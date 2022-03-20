@@ -127,8 +127,8 @@ void AIceBlastPawn2::SetSideForce()
 {
 	SideForce = 0.0;
 }
-	PlayerInputComponent->BindAxis("MoveRight", this, &AIceBlastPawn::MoveRight);
-	PlayerInputComponent->BindAction("Jump", IE_Pressed, this, &AIceBlastPawn::Jump);
+	PlayerInputComponent->BindAxis("MoveRight", this, &AIceBlastPawn2::MoveRight);
+	PlayerInputComponent->BindAction("Jump", IE_Pressed, this, &AIceBlastPawn2::Jump);
 }
 
 void AIceBlastPawn2::OnHit(UPrimitiveComponent * MyComp, AActor * Other, UPrimitiveComponent * OtherComp, FVector NormalImpulse, const FHitResult& Hit)
