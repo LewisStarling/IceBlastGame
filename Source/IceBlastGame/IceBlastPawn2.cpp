@@ -27,6 +27,8 @@ AIceBlastPawn2::AIceBlastPawn2()
 	Ice->BodyInstance.bLockYRotation = true;
 	Ice->BodyInstance.bLockZRotation = true;
 
+	Ice->SetSimulatePhysics(true);
+
 	SideForce = 100;
 
 	AutoPossessPlayer = EAutoReceiveInput::Player0;
