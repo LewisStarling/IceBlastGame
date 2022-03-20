@@ -54,6 +54,7 @@ protected:
 	float CurrentAxisValue;
 	bool bJump;
 	float DefaultSideForce;
+	
 
 	UFUNCTION()
 	void OnHit(UPrimitiveComponent * MyComp, AActor * Other, UPrimitiveComponent * OtherComp, FVector NormalImpulse, const FHitResult& Hit);
