@@ -44,7 +44,6 @@ void AIceBlastPawn::BeginPlay()
 	GameMode = Cast<AIceBlastGameGameMode>(GetWorld()->GetAuthGameMode());
 
 	bGameEnded = false;
-	Ice->SetSimulatePhysics(true);
 	Mass = Ice->GetMass();
 	bJump = false;
 	DefaultSideForce = SideForce;
