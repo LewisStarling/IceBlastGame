@@ -63,10 +63,7 @@ protected:
 
 	UFUNCTION(BlueprintCallable)
 	void OnLanded();
-	//Small Change
 	
-
-    
 	//Functions
 	void GameEnded();
 	void MoveRight(float AxisValue);
