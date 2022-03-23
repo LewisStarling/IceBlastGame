@@ -94,12 +94,14 @@ void AIceBlastPawn::MoveRight(float AxisValue)
 	{
 		FVector Impulse = FVector(0.0f, Mass * SideForce * DeltaSeconds * AxisValue, 0.0f);
 		Ice->AddImpulse(Impulse, "", true);
-		CurrentAxisValue = AxisValue; 
+		CurrentAxisValue = AxisValue;
+		//GEngine->AddOnScreenDebugMessage(-1, -5.f, FColor::Red,"FireIf"); 
 	}
 	else 
 	{
 		FVector Impulse = FVector(0.0f, Mass * SideForce * ReducedSpeed * DeltaSeconds * CurrentAxisValue, 0.0f);
 		Ice->AddImpulse(Impulse, "", true);
+		//GEngine->AddOnScreenDebugMessage(-1, -5.f, FColor::Red,"FireElse");
 	}
 }
 
