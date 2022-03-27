@@ -54,6 +54,7 @@ void AIceBlastPawn::Tick(float DeltaTime)
 {
 	Super::Tick(DeltaTime);
 	DeltaSeconds = DeltaTime;
+	GEngine->AddOnScreenDebugMessage(-1, -5.f, FColor::Red, FString::Printf(TEXT("SideForce: %f"), SideForce));
 }
 
 // Called to bind functionality to input
@@ -122,6 +123,7 @@ void AIceBlastPawn::OnLanded()
 {
 	bJump = false;
 	SideForce = DefaultSideForce;
+	
 }
 
 void AIceBlastPawn::SetSideForce()
@@ -129,3 +131,4 @@ void AIceBlastPawn::SetSideForce()
 {
 	SideForce = 0.0;
 }
+
