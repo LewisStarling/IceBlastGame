@@ -63,6 +63,9 @@ protected:
 
 	UFUNCTION(BlueprintCallable)
 	void OnLanded();
+
+	UFUNCTION(BlueprintCallable)
+	void SetSideForce();
 	
 	//Functions
 	void GameEnded();
@@ -70,7 +73,7 @@ protected:
 	void EndGame();
 	void Jump();
 	void StopJump();
-	void SetSideForce();
+	
 
 private:
 
