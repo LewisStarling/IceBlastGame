@@ -44,9 +44,7 @@ protected:
 	UPROPERTY(EditAnywhere, Category = "Floats")
 	float JumpHeight;
 
-	
 	class AIceBlastGameGameMode* GameMode;
-
 	
 	bool bGameEnded;
 	float Mass;
