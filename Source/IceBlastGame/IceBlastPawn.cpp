@@ -59,8 +59,9 @@ void AIceBlastPawn::Tick(float DeltaTime)
 	Zvelocity = GetVelocity().Z;
 	Yvelocity = GetVelocity().Y;
 	GEngine->AddOnScreenDebugMessage(-1, -5.f, FColor::Red, FString::Printf(TEXT("SideForce: %f"), SideForce));
-	
-	if (Zvelocity > 0.1 || Zvelocity < -0.1) // is character in the air?
+	GEngine->AddOnScreenDebugMessage(-1, -5.f, FColor::Red, FString::Printf(TEXT("SideForce: %f"), Zvelocity));
+
+	if (Zvelocity > 2 || Zvelocity < -2) // is character in the air?
 	{ 
 		
 		bJump = true;
