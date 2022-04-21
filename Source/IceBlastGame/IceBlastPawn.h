@@ -52,6 +52,11 @@ protected:
 	float CurrentAxisValue;
 	bool bJump;
 	float DefaultSideForce;
+	float Zvelocity;
+	float Yvelocity;
+	float YvelocityBeforeJump;  
+	 
+	
 
 	UFUNCTION()
 	void OnHit(UPrimitiveComponent * MyComp, AActor * Other, UPrimitiveComponent * OtherComp, FVector NormalImpulse, const FHitResult& Hit);
@@ -63,14 +68,17 @@ protected:
 	void OnLanded();
 
 	UFUNCTION(BlueprintCallable)
-	void SetSideForce();
-	
+	void AddSlide();
+
+
+
 	//Functions
 	void GameEnded();
 	void MoveRight(float AxisValue);
 	void EndGame();
 	void Jump();
 	void StopJump();
+	
 	
 
 private:
