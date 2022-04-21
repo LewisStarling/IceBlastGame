@@ -47,6 +47,8 @@ void AIceBlastPawn::BeginPlay()
 	Mass = Ice->GetMass();
 	bJump = false;
 	DefaultSideForce = SideForce;
+	
+	
 }
 
 // Called every frame
@@ -54,7 +56,29 @@ void AIceBlastPawn::Tick(float DeltaTime)
 {
 	Super::Tick(DeltaTime);
 	DeltaSeconds = DeltaTime;
+	Zvelocity = GetVelocity().Z;
+	Yvelocity = GetVelocity().Y;
 	GEngine->AddOnScreenDebugMessage(-1, -5.f, FColor::Red, FString::Printf(TEXT("SideForce: %f"), SideForce));
+	GEngine->AddOnScreenDebugMessage(-1, -5.f, FColor::Red, FString::Printf(TEXT("SideForce: %f"), Zvelocity));
+
+	if (Zvelocity > 2 || Zvelocity < -2) // is character in the air?
+	{ 
+		
+		bJump = true;
+		SideForce = 0;
+	
+		GEngine->AddOnScreenDebugMessage(-1, -5.f, FColor::Red,"air");
+	}
+	else
+	{	
+		bJump = false;
+		SideForce = DefaultSideForce;
+		GEngine->AddOnScreenDebugMessage(-1, -5.f, FColor::Red,"fireme");
+	
+	}
+
+
+
 }
 
 // Called to bind functionality to input
@@ -110,25 +134,24 @@ void AIceBlastPawn::Jump()
 {
 	if(!bJump)
 	{
-		SetSideForce();
-		bJump = true;
+		YvelocityBeforeJump = Yvelocity;
+		//bJump = true;
 		FVector Impulse = FVector(0.0f, 0.0f, JumpHeight);
 		Ice->AddImpulse(Impulse, "", true);
 	}
 
-	
 }
 
 void AIceBlastPawn::OnLanded()
 {
-	bJump = false;
+	//bJump = false;
 	SideForce = DefaultSideForce;
 	
 }
 
-void AIceBlastPawn::SetSideForce()
-
+void AIceBlastPawn::AddSlide()
 {
-	SideForce = 0.0;
+	FVector Impulse = FVector(0.0f, YvelocityBeforeJump, -0.0f);
+	Ice->AddImpulse(Impulse, "", true);
+	YvelocityBeforeJump = 0.0f;
 }
-
