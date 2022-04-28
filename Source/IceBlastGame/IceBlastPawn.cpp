@@ -58,26 +58,16 @@ void AIceBlastPawn::Tick(float DeltaTime)
 	DeltaSeconds = DeltaTime;
 	Zvelocity = GetVelocity().Z;
 	Yvelocity = GetVelocity().Y;
-	GEngine->AddOnScreenDebugMessage(-1, -5.f, FColor::Red, FString::Printf(TEXT("SideForce: %f"), SideForce));
-	GEngine->AddOnScreenDebugMessage(-1, -5.f, FColor::Red, FString::Printf(TEXT("SideForce: %f"), Zvelocity));
-
 	if (Zvelocity > 2 || Zvelocity < -2) // is character in the air?
 	{ 
-		
 		bJump = true;
 		SideForce = 0;
-	
-		GEngine->AddOnScreenDebugMessage(-1, -5.f, FColor::Red,"air");
 	}
 	else
 	{	
 		bJump = false;
 		SideForce = DefaultSideForce;
-		GEngine->AddOnScreenDebugMessage(-1, -5.f, FColor::Red,"fireme");
-	
 	}
-
-
 
 }
 
@@ -120,7 +110,6 @@ void AIceBlastPawn::MoveRight(float AxisValue)
 		FVector Impulse = FVector(0.0f, Mass * SideForce * DeltaSeconds * AxisValue, 0.0f);
 		Ice->AddImpulse(Impulse, "", true);
 		CurrentAxisValue = AxisValue;
-		//GEngine->AddOnScreenDebugMessage(-1, -5.f, FColor::Red,"FireIf"); 
 	}
 	else 
 	{
@@ -135,7 +124,6 @@ void AIceBlastPawn::Jump()
 	if(!bJump)
 	{
 		YvelocityBeforeJump = Yvelocity;
-		//bJump = true;
 		FVector Impulse = FVector(0.0f, 0.0f, JumpHeight);
 		Ice->AddImpulse(Impulse, "", true);
 	}
@@ -144,9 +132,7 @@ void AIceBlastPawn::Jump()
 
 void AIceBlastPawn::OnLanded()
 {
-	//bJump = false;
-	SideForce = DefaultSideForce;
-	
+	SideForce = DefaultSideForce;	
 }
 
 void AIceBlastPawn::AddSlide()
