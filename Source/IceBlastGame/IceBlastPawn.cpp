@@ -8,6 +8,7 @@
 #include "IceBlastGameGameMode.h"
 
 
+
 // Sets default values
 AIceBlastPawn::AIceBlastPawn()
 {
@@ -58,6 +59,8 @@ void AIceBlastPawn::Tick(float DeltaTime)
 	DeltaSeconds = DeltaTime;
 	Zvelocity = GetVelocity().Z;
 	Yvelocity = GetVelocity().Y;
+	//GEngine->AddOnScreenDebugMessage(-1, 0.0f, FColor::White, FString::Printf(TEXT("Output: %f"), SideForce));
+
 	if (Zvelocity > 2 || Zvelocity < -2) // is character in the air?
 	{ 
 		bJump = true;
@@ -104,6 +107,10 @@ void AIceBlastPawn::MoveRight(float AxisValue)
 	if(bGameEnded)
 	
 	return; 
+
+	if(bPause)
+
+	return;
 	
 	if(AxisValue != 0)
 	{
@@ -140,4 +147,14 @@ void AIceBlastPawn::AddSlide()
 	FVector Impulse = FVector(0.0f, YvelocityBeforeJump, -0.0f);
 	Ice->AddImpulse(Impulse, "", true);
 	YvelocityBeforeJump = 0.0f;
+}
+
+void AIceBlastPawn::StopForce()
+{
+	bPause = true;
+}
+
+void AIceBlastPawn::StartForce()
+{
+	bPause = false;
 }

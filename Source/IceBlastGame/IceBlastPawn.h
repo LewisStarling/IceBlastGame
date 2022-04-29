@@ -6,6 +6,7 @@
 #include "GameFramework/Pawn.h"
 #include "IceBlastPawn.generated.h"
 
+
 UCLASS()
 class ICEBLASTGAME_API AIceBlastPawn : public APawn
 {
@@ -55,7 +56,7 @@ protected:
 	float Zvelocity;
 	float Yvelocity;
 	float YvelocityBeforeJump;  
-	 
+	bool bPause;
 	
 
 	UFUNCTION()
@@ -71,6 +72,11 @@ protected:
 	void AddSlide();
 
 
+	UFUNCTION(BlueprintCallable)
+	void StopForce();
+
+	UFUNCTION(BlueprintCallable)
+	void StartForce();
 
 	//Functions
 	void GameEnded();
@@ -78,6 +84,7 @@ protected:
 	void EndGame();
 	void Jump();
 	void StopJump();
+	
 	
 	
 
